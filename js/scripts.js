@@ -76,9 +76,21 @@ $(document).ready(function(){
     usersOrder.addPizza(usersPizza);
     usersOrder.getOrderPrice();
     $("#orderPizza")[0].reset();
-    console.log(usersOrder);
 
     $("#pizzasOrdered").append("<li id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
+
+  });
+  $("#pizzasOrdered").on("click", "li", function() {
+    let chosenPizza = this.id;
+    let pizza = usersOrder.pizzas[chosenPizza - 1];
+    $("#pizzaInfo").show();
+    $("#pizzaSizeOutput").text(pizza.size[0]);
+    $("#pizzaCostOutput").text(pizza.price);
+    $("#orderTotalOutput").text(usersOrder.totalPrice);
+    $("#pizzaToppingsOutput").empty();
+    pizza.toppings.forEach(function(topping) {
+      $("#pizzaToppingsOutput").append("<li>" + topping[0] + "</li>");
+    });
   });
 
 });

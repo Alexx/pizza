@@ -1,0 +1,12 @@
+ul {
+  list-style: none;
+  font-size: 24px;
+}
+
+#pizzaInfo {
+  display: none;
+}
+
+#orderTotalOutput {
+  color: red;
+}
