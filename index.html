@@ -13,6 +13,7 @@
         <h1>Pizza Planet</h1>
       </div>
       <form id="orderPizza">
+
         <div class="form-group">
           <label for="pizzaSize">Select a Size</label>
             <select class="form-control" id="pizzaSize">
@@ -22,19 +23,28 @@
               <option value="3">X-Large (16") - $14.00</option>
             </select>
         </div>
-        <label for="checkBoxes">Select Toppings</label>
-        <div class="form-check">
-          <input class="form-check-input" id="toppingPepperoni" type="checkbox" name="toppings" value="0">
-          <label class=="form-check-label" for="toppingPepperoni">Pepperoni - $1.00</label>
+
+        <div class="form-group">
+          <label for="checkBoxes">Select Toppings</label>
+          <div class="form-check">
+            <input class="form-check-input" id="toppingPepperoni" type="checkbox" name="toppings" value="0">
+            <label class=="form-check-label" for="toppingPepperoni">Pepperoni - $1.00</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" id="toppingSausage" type="checkbox" name="toppings" value="1">
+            <label class=="form-check-label" for="toppingSausage">Sausage - $1.00</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" id="toppingChicken" type="checkbox" name="toppings" value="2">
+            <label class=="form-check-label" for="toppingChicken">Chicken - $1.50</label>
+          </div>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" id="toppingSausage" type="checkbox" name="toppings" value="1">
-          <label class=="form-check-label" for="toppingSausage">Sausage - $1.00</label>
+
+        <div class="form-group">
+          <label for="pizzaInstructions">Special Instructions</label>
+          <textarea class="form-control" id="pizzaInstructions" name="name" rows="4" cols="80"></textarea>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" id="toppingChicken" type="checkbox" name="toppings" value="2">
-          <label class=="form-check-label" for="toppingChicken">Chicken - $1.50</label>
-        </div>
+
         <button type="submit" name="button">Place Order</button>
       </form>
     </div>
