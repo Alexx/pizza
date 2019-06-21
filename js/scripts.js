@@ -46,7 +46,9 @@ $(document).ready(function(){
       let toppingChoice = $(this).val();
       usersPizza.addTopping(pizzaToppings[toppingChoice]);
     });
-    console.log(usersPizza.getPrice());
+    usersPizza.getPrice();
+    console.log(usersPizza);
+    $("#orderPizza")[0].reset();
   });
 
 });
