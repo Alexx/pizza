@@ -9,7 +9,25 @@
   </head>
   <body>
     <div class="container">
+      <div class="jumbotron">
+        <h1>Pizza Planet</h1>
+      </div>
+      <form id="orderPizza">
+        <div class="form-group">
+          <label for="pizzaSize">Select a Size</label>
+            <select class="form-control" id="pizzaSize">
+              <option value="0">Small (10") - $8</option>
+              <option value="1">Medium (12") - $10</option>
+              <option value="2">Large (14") - $12</option>
+              <option value="3">X-Large (16") - $14</option>
+            </select>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="toppingPepperoni" type="checkbox" value="0">
+          <label class=="form-check-label" for="toppingPepperoni">Pepperoni</label>
+        </div>
 
+      </form>
     </div>
   </body>
 </html>
