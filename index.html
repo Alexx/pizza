@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.4.1.js"></script>
@@ -9,14 +10,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron">
-        <h1>Pizza Planet</h1>
+      <div class="jumbotron text-center">
+        <h1>Pizza Palace</h1>
       </div>
       <div class="row">
         <div class="col-md-6">
 
           <div class="card">
-            <div class="card-header">
+            <div class="card-header text-center">
               Customize Your Pizza
             </div>
             <div class="card-body">
@@ -73,7 +74,7 @@
                   <textarea class="form-control" id="pizzaInstructions" name="name" rows="4" cols="80"></textarea>
                 </div>
 
-                <button type="submit" name="button">Add to Order</button>
+                <button class="btn btn-primary" type="submit" name="button">Add to Order</button>
               </form>
 
             </div>
@@ -83,7 +84,7 @@
 
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header text-center">
               Your Current Order
             </div>
             <div class="card-body">
@@ -93,19 +94,19 @@
 
               <div id="pizzaInfo">
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header text-center">
                     <span>Pizza Info</span>
                   </div>
                   <div class="card-body">
-                    <h4>Price: $ <span id="pizzaCostOutput"></span></h4>
-                    <h4>Size: <span id="pizzaSizeOutput"></span></h4>
-                    <h4>Toppings:</span></h3>
+                    <p>Price: $ <span id="pizzaCostOutput"></span></p>
+                    <p>Size: <span id="pizzaSizeOutput"></span></p>
+                    <p>Toppings:</span></p>
                     <ul id="pizzaToppingsOutput">
 
                     </ul>
                   </div>
                   <div class="card-footer">
-                    <h4>Total: $ <span id="orderTotalOutput"></span> </h4>
+                    Total: $ <span id="orderTotalOutput"></span>
                   </div>
                 </div>
               </div>

@@ -89,7 +89,7 @@ $(document).ready(function(){
     usersOrder.getOrderPrice();
     $("#orderPizza")[0].reset();
 
-    $("#pizzasOrdered").append("<li id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
+    $("#pizzasOrdered").append("<li class='circle' id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
     $("#orderTotalOutput").text(usersOrder.totalPrice);
   });
   $("#pizzasOrdered").on("click", "li", function() {
