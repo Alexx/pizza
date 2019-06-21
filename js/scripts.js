@@ -1,16 +1,25 @@
-const pizzaSizes = [["Small", 8],
-                    ["Medium", 10],
-                    ["Large", 12],
-                    ["X-Large", 14]];
-const pizzaToppings = [["Pepperoni", 1],
-                       ["Sausage", 1],
-                       ["Chicken", 1.5],
-                       ["Bacon", 2],
-                       ["Mushrooms", 1],
-                       ["Black Olives", 0.5],
-                       ["Green Peppers", 1]];
+const pizzaSizes = [["Small", 8], ["Medium", 10], ["Large", 12], ["X-Large", 14]];
+const pizzaToppings = [["Pepperoni", 1], ["Sausage", 1], ["Chicken", 1.5], ["Bacon", 2], ["Mushrooms", 1], ["Black Olives", 0.5], ["Green Peppers", 1]];
 
 //Business logic
+function Order(usersName) {
+  this.usersName = usersName;
+  this.pizzas = [];
+  this.totalPrice = 0;
+};
+
+Order.prototype.addPizza = function(pizza) {
+  this.pizzas.push(pizza);
+}
+
+Order.prototype.getOrderPrice = function() {
+  let totalOrderPrice = 0;
+  this.pizzas.forEach(function(pizza) {
+    totalOrderPrice += pizza.price;
+  });
+  this.totalPrice = totalOrderPrice;
+};
+
 function Pizza(size) {
   this.size = size;
   this.toppings = [];
@@ -27,7 +36,6 @@ Pizza.prototype.getPrice = function() {
     totalPrice += topping[1];
   });
   this.price = totalPrice;
-  return totalPrice;
 };
 
 // Pizza.prototype.reset = function() {
@@ -37,6 +45,7 @@ Pizza.prototype.getPrice = function() {
 
 //User-interface logic
 $(document).ready(function(){
+  let usersOrder = new Order;
 
   $("#orderPizza").submit(function(event) {
     event.preventDefault();
@@ -47,7 +56,8 @@ $(document).ready(function(){
       usersPizza.addTopping(pizzaToppings[toppingChoice]);
     });
     usersPizza.getPrice();
-    console.log(usersPizza);
+    usersOrder.addPizza(usersPizza);
+    usersOrder.getOrderPrice();
     $("#orderPizza")[0].reset();
   });
 
