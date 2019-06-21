@@ -35,6 +35,12 @@ Pizza.prototype.getSize = function(inputSize) {
 };
 
 Pizza.prototype.addTopping = function(topping) {
+  for (var i = 0; i < pizzaToppings.length; i++) {
+    if(pizzaToppings[i][0] === topping) {
+      topping = pizzaToppings[i];
+      console.log(topping);
+    }
+  }
   this.toppings.push(topping);
 };
 
@@ -55,12 +61,11 @@ $(document).ready(function(){
     let usersPizza = new Pizza();
     let pizzaSize = $("#pizzaSize").val();
     usersPizza.getSize(pizzaSize);
-    console.log(usersPizza);
 
 
     $("input:checkbox[name=toppings]:checked").each(function() {
       let toppingChoice = $(this).val();
-      usersPizza.addTopping(pizzaToppings[toppingChoice]);
+      usersPizza.addTopping(toppingChoice);
     });
     usersPizza.getPrice();
     usersOrder.addPizza(usersPizza);
