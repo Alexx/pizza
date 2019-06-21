@@ -28,13 +28,24 @@ Pizza.prototype.price = function() {
   return totalPrice;
 };
 
+Pizza.prototype.reset = function() {
+  this.size = "";
+  this.toppings = [];
+};
+
 //User-interface logic
 $(document).ready(function(){
-  let myPizza = new Pizza(["Large", 12]);
-  console.log(myPizza);
-  myPizza.addTopping(["Mayonnaise", 1]);
-  console.log(myPizza);
-  myPizza.addTopping(["Bacon", 2]);
-  console.log(myPizza);
-  console.log(myPizza.price());
+  let usersPizza = new Pizza();
+
+  $("#orderPizza").submit(function(event) {
+    event.preventDefault();
+    usersPizza.reset();
+    usersPizza.size = pizzaSizes[$("#pizzaSize").val()];
+    $("input:checkbox[name=toppings]:checked").each(function() {
+      let toppingChoice = $(this).val();
+      usersPizza.addTopping(pizzaToppings[toppingChoice]);
+    });
+    console.log(usersPizza);
+  });
+
 });

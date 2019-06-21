@@ -16,17 +16,26 @@
         <div class="form-group">
           <label for="pizzaSize">Select a Size</label>
             <select class="form-control" id="pizzaSize">
-              <option value="0">Small (10") - $8</option>
-              <option value="1">Medium (12") - $10</option>
-              <option value="2">Large (14") - $12</option>
-              <option value="3">X-Large (16") - $14</option>
+              <option value="0">Small (10") - $8.00</option>
+              <option value="1">Medium (12") - $10.00</option>
+              <option value="2">Large (14") - $12.00</option>
+              <option value="3">X-Large (16") - $14.00</option>
             </select>
         </div>
+        <label for="checkBoxes">Select Toppings</label>
         <div class="form-check">
-          <input class="form-check-input" id="toppingPepperoni" type="checkbox" value="0">
-          <label class=="form-check-label" for="toppingPepperoni">Pepperoni</label>
+          <input class="form-check-input" id="toppingPepperoni" type="checkbox" name="toppings" value="0">
+          <label class=="form-check-label" for="toppingPepperoni">Pepperoni - $1.00</label>
         </div>
-
+        <div class="form-check">
+          <input class="form-check-input" id="toppingSausage" type="checkbox" name="toppings" value="1">
+          <label class=="form-check-label" for="toppingSausage">Sausage - $1.00</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="toppingChicken" type="checkbox" name="toppings" value="2">
+          <label class=="form-check-label" for="toppingChicken">Chicken - $1.50</label>
+        </div>
+        <button type="submit" name="button">Place Order</button>
       </form>
     </div>
   </body>
