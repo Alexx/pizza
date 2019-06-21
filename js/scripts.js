@@ -12,12 +12,12 @@ function Order(usersName) {
 Order.prototype.addPizza = function(pizza) {
   pizza.id = this.assignID();
   this.pizzas.push(pizza);
-}
+};
 
 Order.prototype.assignID = function() {
   this.currentID += 1;
   return this.currentID;
-}
+};
 
 Order.prototype.getOrderPrice = function() {
   let totalOrderPrice = 0;
@@ -35,7 +35,7 @@ function Pizza() {
 };
 
 Pizza.prototype.getSize = function(inputSize) {
-  for (var i = 0; i < pizzaSizes.length; i++) {
+  for (let i = 0; i < pizzaSizes.length; i++) {
     if(pizzaSizes[i][0] === inputSize) {
       this.size = pizzaSizes[i];
     }
@@ -43,7 +43,7 @@ Pizza.prototype.getSize = function(inputSize) {
 };
 
 Pizza.prototype.addTopping = function(topping) {
-  for (var i = 0; i < pizzaToppings.length; i++) {
+  for (let i = 0; i < pizzaToppings.length; i++) {
     if(pizzaToppings[i][0] === topping) {
       topping = pizzaToppings[i];
       console.log(topping);
@@ -60,6 +60,7 @@ Pizza.prototype.getPrice = function() {
   this.price = totalPrice;
 };
 
+//User-interface logic
 function displayPizza(order, pizzaID) {
   let pizza = order.pizzas[pizzaID - 1];
   $("#pizzaInfo").show();
@@ -71,7 +72,6 @@ function displayPizza(order, pizzaID) {
   });
 };
 
-//User-interface logic
 $(document).ready(function(){
   let usersOrder = new Order;
 
@@ -92,6 +92,7 @@ $(document).ready(function(){
     $("#pizzasOrdered").append("<li class='circle' id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
     $("#orderTotalOutput").text(usersOrder.totalPrice);
   });
+
   $("#pizzasOrdered").on("click", "li", function() {
     let pizzaID = this.id;
     displayPizza(usersOrder, pizzaID);

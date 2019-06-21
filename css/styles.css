@@ -17,6 +17,34 @@ label {
   padding-bottom: 4px;
 }
 
+.btn-primary {
+  color: #911F00;
+  background-color: #F2B500;
+  border-color: #565B57;
+}
+
+.btn-primary:hover {
+  color: #F2B500;
+  background-color: #911F00;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem #565B57;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #911F00;
+  background-color: #F2B500;
+  border-color: #565B57;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #911F00;
+  background-color: #F2B500;
+  border-color: #565B57;
+}
+
 .container {
   background-color: #6F7570;
 }
@@ -42,6 +70,14 @@ label {
   text-align: center;
   margin: 8px;
   display: inline-block;
+  border: thick;
+  border-color: #565B57;
+}
+
+.circle:hover {
+  color: #F2B500;
+  background-color: #911F00;
+
 }
 
 #pizzaInfo {
