@@ -14,38 +14,39 @@ const pizzaToppings = [["Pepperoni", 1],
 function Pizza(size) {
   this.size = size;
   this.toppings = [];
+  this.price = 0;
 };
 
 Pizza.prototype.addTopping = function(topping) {
   this.toppings.push(topping);
 };
 
-Pizza.prototype.price = function() {
+Pizza.prototype.getPrice = function() {
   let totalPrice = this.size[1];
   this.toppings.forEach(function(topping) {
     totalPrice += topping[1];
   });
+  this.price = totalPrice;
   return totalPrice;
 };
 
-Pizza.prototype.reset = function() {
-  this.size = "";
-  this.toppings = [];
-};
+// Pizza.prototype.reset = function() {
+//   this.size = "";
+//   this.toppings = [];
+// };
 
 //User-interface logic
 $(document).ready(function(){
-  let usersPizza = new Pizza();
 
   $("#orderPizza").submit(function(event) {
     event.preventDefault();
-    usersPizza.reset();
+    let usersPizza = new Pizza();
     usersPizza.size = pizzaSizes[$("#pizzaSize").val()];
     $("input:checkbox[name=toppings]:checked").each(function() {
       let toppingChoice = $(this).val();
       usersPizza.addTopping(pizzaToppings[toppingChoice]);
     });
-    console.log(usersPizza);
+    console.log(usersPizza.getPrice());
   });
 
 });
