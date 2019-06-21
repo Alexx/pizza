@@ -1,6 +1,5 @@
 ul {
-  list-style: none;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 h1 {
@@ -32,14 +31,8 @@ label {
   box-shadow: 0 0 0 0.2rem #565B57;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
-  color: #911F00;
-  background-color: #F2B500;
-  border-color: #565B57;
-}
-
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
+.show {
   color: #911F00;
   background-color: #F2B500;
   border-color: #565B57;

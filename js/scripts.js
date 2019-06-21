@@ -77,6 +77,11 @@ function displayPizza(order, pizzaID) {
   });
 };
 
+function createPizzaListItem(order, pizza) {
+  $("#pizzasOrdered").append("<li class='btn btn-primary circle' id=" + pizza.id + ">" + "Pizza #" + pizza.id + "</li>")
+  $("#orderTotalOutput").text(order.totalPrice);
+}
+
 $(document).ready(function(){
   let usersOrder = new Order;
 
@@ -96,8 +101,7 @@ $(document).ready(function(){
     usersOrder.getOrderPrice();
     $("#orderPizza")[0].reset();
 
-    $("#pizzasOrdered").append("<li class='btn btn-primary circle' id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
-    $("#orderTotalOutput").text(usersOrder.totalPrice);
+    createPizzaListItem(usersOrder, usersPizza);
   });
 
   $("#pizzasOrdered").on("click", "li", function() {
