@@ -3,6 +3,24 @@ ul {
   font-size: 24px;
 }
 
+body {
+  background-color: #565B57;
+}
+
+.container {
+  background-color: #6F7570;
+}
+
+.card-header, .jumbotron {
+  color: #F2B500;
+  background-color: #911F00;
+}
+
+.card-body {
+  color: #565B57;
+  background-color: #EEEDE8;
+}
+
 #pizzaInfo {
   display: none;
 }
