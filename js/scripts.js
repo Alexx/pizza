@@ -31,6 +31,7 @@ function Pizza() {
   this.size = "";
   this.toppings = [];
   this.price = 0;
+  this.specialInstruction = "";
 };
 
 Pizza.prototype.getSize = function(inputSize) {
@@ -59,6 +60,17 @@ Pizza.prototype.getPrice = function() {
   this.price = totalPrice;
 };
 
+function displayPizza(order, pizzaID) {
+  let pizza = order.pizzas[pizzaID - 1];
+  $("#pizzaInfo").show();
+  $("#pizzaSizeOutput").text(pizza.size[0]);
+  $("#pizzaCostOutput").text(pizza.price);
+  $("#pizzaToppingsOutput").empty();
+  pizza.toppings.forEach(function(topping) {
+    $("#pizzaToppingsOutput").append("<li>" + topping[0] + "</li>");
+  });
+};
+
 //User-interface logic
 $(document).ready(function(){
   let usersOrder = new Order;
@@ -78,19 +90,11 @@ $(document).ready(function(){
     $("#orderPizza")[0].reset();
 
     $("#pizzasOrdered").append("<li id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
-
+    $("#orderTotalOutput").text(usersOrder.totalPrice);
   });
   $("#pizzasOrdered").on("click", "li", function() {
-    let chosenPizza = this.id;
-    let pizza = usersOrder.pizzas[chosenPizza - 1];
-    $("#pizzaInfo").show();
-    $("#pizzaSizeOutput").text(pizza.size[0]);
-    $("#pizzaCostOutput").text(pizza.price);
-    $("#orderTotalOutput").text(usersOrder.totalPrice);
-    $("#pizzaToppingsOutput").empty();
-    pizza.toppings.forEach(function(topping) {
-      $("#pizzaToppingsOutput").append("<li>" + topping[0] + "</li>");
-    });
+    let pizzaID = this.id;
+    displayPizza(usersOrder, pizzaID);
   });
 
 });
