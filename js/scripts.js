@@ -3,10 +3,11 @@ function Pizza(size) {
   this.toppings = [];
 }
 
-Pizza.prototype.price() {
-  
+Pizza.prototype.price = function() {
+
 }
 
 $(document).ready(function(){
-
+  var myPizza = new Pizza("Medium");
+  console.log(myPizza);
 });
