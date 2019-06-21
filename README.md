@@ -1,12 +1,12 @@
 # _Pizza_
 
-#### _A web page order pizza, 6-21-2019_
+#### _A web page to order pizza, 6-21-2019_
 
 #### _Author: Alex Siegberg_
 
 ## Description
 
-_This web page will ask the user to select topping and a size to order a pizza. After ordering, the price will be displayed to the user._
+_This web page will ask the user to select toppings and a size to order a pizza. After ordering, the pizza info will be displayed to the user, including its price._
 
 ## Spec
 
