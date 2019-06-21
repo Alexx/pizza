@@ -60,12 +60,17 @@ Pizza.prototype.getPrice = function() {
   this.price = totalPrice;
 };
 
+Pizza.prototype.getInstructions = function() {
+  this.specialInstruction = $("#pizzaInstructions").val()
+};
+
 //User-interface logic
 function displayPizza(order, pizzaID) {
   let pizza = order.pizzas[pizzaID - 1];
   $("#pizzaInfo").show();
   $("#pizzaSizeOutput").text(pizza.size[0]);
   $("#pizzaCostOutput").text(pizza.price);
+  $("#instructionsOutput").text(pizza.specialInstruction);
   $("#pizzaToppingsOutput").empty();
   pizza.toppings.forEach(function(topping) {
     $("#pizzaToppingsOutput").append("<li>" + topping[0] + "</li>");
@@ -85,11 +90,13 @@ $(document).ready(function(){
     });
     usersPizza.getSize(pizzaSize);
     usersPizza.getPrice();
+    usersPizza.getInstructions();
+
     usersOrder.addPizza(usersPizza);
     usersOrder.getOrderPrice();
     $("#orderPizza")[0].reset();
 
-    $("#pizzasOrdered").append("<li class='circle' id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
+    $("#pizzasOrdered").append("<li class='btn btn-primary circle' id=" + usersPizza.id + ">" + "Pizza #" + usersPizza.id + "</li>")
     $("#orderTotalOutput").text(usersOrder.totalPrice);
   });
 
