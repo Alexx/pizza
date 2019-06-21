@@ -13,9 +13,9 @@ _This web page will ask the user to select topping and a size to order a pizza. 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
 | Base size pizza with no toppings | none | $10 |
-| Select size | size: "Small"/"Medium"/"Large" | $8/$10/$12 |
+| Select size of pizza | size: "Small"/"Medium"/"Large" | $8/$10/$12 |
 | Add a topping will add additional price to order | size: "Medium", toppings: "Pepperoni($1.50)" | $11.50 |
-| Add multiple toppings to pizza | size: "Medium". toppings: "Mushrooms($1.00)", "Pepperoni($1.50) | $12.50 | 
+| Add multiple toppings to pizza | size: "Medium". toppings: "Mushrooms($1.00)", "Pepperoni($1.50) | $12.50 |
 
 ## Setup/Installation
 
