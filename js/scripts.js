@@ -2,8 +2,7 @@ const pizzaSizes = [["Small", 8], ["Medium", 10], ["Large", 12], ["X-Large", 14]
 const pizzaToppings = [["Pepperoni", 1], ["Sausage", 1], ["Chicken", 1.5], ["Bacon", 2], ["Black Olives", 0.5], ["Mushrooms", 1], ["Green Peppers", 1]];
 
 //Business logic
-function Order(usersName) {
-  this.usersName = usersName;
+function Order() {
   this.pizzas = [];
   this.totalPrice = 0;
   this.currentID = 0;
