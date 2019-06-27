@@ -1,5 +1,5 @@
-const pizzaSizes = [["Small", 8], ["Medium", 10], ["Large", 12], ["X-Large", 14]];
-const pizzaToppings = [["Pepperoni", 1], ["Sausage", 1], ["Chicken", 1.5], ["Bacon", 2], ["Black Olives", 0.5], ["Mushrooms", 1], ["Green Peppers", 1]];
+const pizzaSizes = [['Small', 8], ['Medium', 10], ['Large', 12], ['X-Large', 14]];
+const pizzaToppings = [['Pepperoni', 1], ['Sausage', 1], ['Chicken', 1.5], ['Bacon', 2], ['Black Olives', 0.5], ['Mushrooms', 1], ['Green Peppers', 1]];
 
 //Business logic
 function Order() {
@@ -8,21 +8,22 @@ function Order() {
   this.currentID = 0;
 };
 
-Order.prototype.addPizza = function(pizza) {
+Order.prototype.addPizza = function (pizza) {
   pizza.id = this.assignID();
   this.pizzas.push(pizza);
 };
 
-Order.prototype.assignID = function() {
+Order.prototype.assignID = function () {
   this.currentID += 1;
   return this.currentID;
 };
 
-Order.prototype.getOrderPrice = function() {
+Order.prototype.getOrderPrice = function () {
   let totalOrderPrice = 0;
-  this.pizzas.forEach(function(pizza) {
+  this.pizzas.forEach(function (pizza) {
     totalOrderPrice += pizza.price;
   });
+
   this.totalPrice = totalOrderPrice;
 };
 
@@ -35,7 +36,7 @@ function Pizza(size, toppings, price, specialInstruction) {
 
 function getSize(inputSize) {
   for (let i = 0; i < pizzaSizes.length; i++) {
-    if(pizzaSizes[i][0] === inputSize) {
+    if (pizzaSizes[i][0] === inputSize) {
       return pizzaSizes[i];
     }
   }
@@ -51,54 +52,56 @@ function addTopping(topping) {
 
 function getPrice(size, toppings) {
   let totalPrice = size[1];
-  toppings.forEach(function(topping) {
+  toppings.forEach(function (topping) {
     totalPrice += topping[1];
   });
+
   return totalPrice;
 };
 
 //User-interface logic
 function displayPizza(order, pizzaID) {
-  let pizza = order.pizzas[pizzaID - 1];
-  $("#pizzaInfo").show();
-  $("#pizzaSizeOutput").text(pizza.size[0]);
-  $("#pizzaCostOutput").text(pizza.price);
-  $("#instructionsOutput").text(pizza.specialInstruction);
-  $("#pizzaToppingsOutput").empty();
-  pizza.toppings.forEach(function(topping) {
-    $("#pizzaToppingsOutput").append("<li>" + topping[0] + "</li>");
+  const pizza = order.pizzas[pizzaID - 1];
+  $('#pizzaInfo').show();
+  $('#pizzaSizeOutput').text(pizza.size[0]);
+  $('#pizzaCostOutput').text(pizza.price);
+  $('#instructionsOutput').text(pizza.specialInstruction);
+  $('#pizzaToppingsOutput').empty();
+  pizza.toppings.forEach(function (topping) {
+    $('#pizzaToppingsOutput').append('<li>' + topping[0] + '</li>');
   });
 };
 
 function createPizzaListItem(order, pizza) {
-  $("#pizzasOrdered").append("<li class='btn btn-primary circle' id=" + pizza.id + ">" + "Pizza #" + pizza.id + "</li>")
-  $("#orderTotalOutput").text(order.totalPrice);
+  $('#pizzasOrdered').append('<li class=\'btn btn-primary circle\' id=' + pizza.id + '>' + 'Pizza #' + pizza.id + '</li>');
+  $('#orderTotalOutput').text(order.totalPrice);
 }
 
-$(document).ready(function(){
-  let usersOrder = new Order;
+$(document).ready(function () {
+  const usersOrder = new Order;
 
-  $("#orderPizza").submit(function(event) {
+  $('#orderPizza').submit(function (event) {
     event.preventDefault();
-    let pizzaSize = getSize($("#pizzaSize").val());
-    let pizzaToppings = [];
-    let pizzaInstructions = $("#pizzaInstructions").val();
-    $("input:checkbox[name=toppings]:checked").each(function() {
-      let toppingChoice = $(this).val();
+    const pizzaSize = getSize($('#pizzaSize').val());
+    const pizzaToppings = [];
+    const pizzaInstructions = $('#pizzaInstructions').val();
+    $('input:checkbox[name=toppings]:checked').each(function () {
+      const toppingChoice = $(this).val();
       pizzaToppings.push(addTopping(toppingChoice));
     });
-    let pizzaPrice = getPrice(pizzaSize, pizzaToppings);
-    let usersPizza = new Pizza(pizzaSize, pizzaToppings, pizzaPrice, pizzaInstructions);
+
+    const pizzaPrice = getPrice(pizzaSize, pizzaToppings);
+    const usersPizza = new Pizza(pizzaSize, pizzaToppings, pizzaPrice, pizzaInstructions);
 
     usersOrder.addPizza(usersPizza);
     usersOrder.getOrderPrice();
-    $("#orderPizza")[0].reset();
+    $('#orderPizza')[0].reset();
 
     createPizzaListItem(usersOrder, usersPizza);
   });
 
-  $("#pizzasOrdered").on("click", "li", function() {
-    let pizzaID = this.id;
+  $('#pizzasOrdered').on('click', 'li', function () {
+    const pizzaID = this.id;
     displayPizza(usersOrder, pizzaID);
   });
 
