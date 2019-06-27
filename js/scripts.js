@@ -26,41 +26,35 @@ Order.prototype.getOrderPrice = function() {
   this.totalPrice = totalOrderPrice;
 };
 
-function Pizza() {
-  this.size = "";
-  this.toppings = [];
-  this.price = 0;
-  this.specialInstruction = "";
+function Pizza(size, toppings, price, specialInstruction) {
+  this.size = size;
+  this.toppings = toppings;
+  this.price = price;
+  this.specialInstruction = specialInstruction;
 };
 
-Pizza.prototype.getSize = function(inputSize) {
+function getSize(inputSize) {
   for (let i = 0; i < pizzaSizes.length; i++) {
     if(pizzaSizes[i][0] === inputSize) {
-      this.size = pizzaSizes[i];
+      return pizzaSizes[i];
     }
   }
 };
 
-Pizza.prototype.addTopping = function(topping) {
+function addTopping(topping) {
   for (let i = 0; i < pizzaToppings.length; i++) {
-    if(pizzaToppings[i][0] === topping) {
-      topping = pizzaToppings[i];
-      console.log(topping);
+    if (pizzaToppings[i][0] === topping) {
+      return pizzaToppings[i];
     }
   }
-  this.toppings.push(topping);
 };
 
-Pizza.prototype.getPrice = function() {
-  let totalPrice = this.size[1];
-  this.toppings.forEach(function(topping) {
+function getPrice(size, toppings) {
+  let totalPrice = size[1];
+  toppings.forEach(function(topping) {
     totalPrice += topping[1];
   });
-  this.price = totalPrice;
-};
-
-Pizza.prototype.getInstructions = function() {
-  this.specialInstruction = $("#pizzaInstructions").val()
+  return totalPrice;
 };
 
 //User-interface logic
@@ -86,15 +80,15 @@ $(document).ready(function(){
 
   $("#orderPizza").submit(function(event) {
     event.preventDefault();
-    let usersPizza = new Pizza();
-    let pizzaSize = $("#pizzaSize").val();
+    let pizzaSize = getSize($("#pizzaSize").val());
+    let pizzaToppings = [];
+    let pizzaInstructions = $("#pizzaInstructions").val();
     $("input:checkbox[name=toppings]:checked").each(function() {
       let toppingChoice = $(this).val();
-      usersPizza.addTopping(toppingChoice);
+      pizzaToppings.push(addTopping(toppingChoice));
     });
-    usersPizza.getSize(pizzaSize);
-    usersPizza.getPrice();
-    usersPizza.getInstructions();
+    let pizzaPrice = getPrice(pizzaSize, pizzaToppings);
+    let usersPizza = new Pizza(pizzaSize, pizzaToppings, pizzaPrice, pizzaInstructions);
 
     usersOrder.addPizza(usersPizza);
     usersOrder.getOrderPrice();
